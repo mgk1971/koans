@@ -14,6 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  if [a,b,c].min <= 0
+    raise TriangleError, "No side shall be 0 or bellow"
+  end
+
+  x,y,z = [a,b,c].sort
+  if x + y <= z
+    raise TriangleError, "The two shortest sides shall add up to the longest"
+  end
+  
   if (a == b and c == b)
     return :equilateral
   elsif (a == b or b == c or a == c)
